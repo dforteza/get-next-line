@@ -6,7 +6,7 @@
 /*   By: difortez <difortez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 20:37:48 by difortez          #+#    #+#             */
-/*   Updated: 2026/09/15 18:27:19 by difortez         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:47:42 by difortez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,11 @@ static void	ft_clean_list(t_list **lst)
 
 	leftover = ft_get_leftover(ft_last_node(*lst)->content);
 	ft_free_list(lst);
-	if (leftover && !ft_add_node(lst, leftover))
-		free(leftover);
+	if (leftover)
+	{
+		if (!ft_add_node(lst, leftover))
+			free(leftover);
+	}
 }
 
 /* Devuelve la siguiente linea de fd (con su '\n' si lo tiene),
